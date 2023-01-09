@@ -14,7 +14,7 @@ function App() {
       console.log("error :>> ", error);
     });
   return (
-   <h1>hello  Rick and Morty</h1>
+   <h1>hello Rick and Morty</h1>
   );
 }
 
