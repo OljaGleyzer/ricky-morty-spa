@@ -1,12 +1,13 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import './NavBar.css';
 
 function NavBar() {
     return (
-        <Navbar expand="lg" variant="light" bg="light">
+        <Navbar class="NavBar" expand="lg" variant="light" bg="light">
           <Container>
-            <Navbar.Brand href="#">Navbar</Navbar.Brand>
+            <Navbar.Brand>Navbar</Navbar.Brand>
           </Container>
         </Navbar>
       );
