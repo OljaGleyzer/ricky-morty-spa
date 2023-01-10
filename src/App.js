@@ -1,20 +1,11 @@
 import './App.css';
+import {useState, useEffect} from "react";
+
 
 function App() {
-  fetch("https://rickandmortyapi.com/api/character")
-    .then((response) => {
-      console.log("response :>> ", response);
-      return response.json();
-    })
-    .then((result) => {
-      console.log("result :>> ", result);
-
-    })
-    .catch((error) => {
-      console.log("error :>> ", error);
-    });
+  
   return (
-   <h1>hello Rick and Morty</h1>
+   <h1>Hello Rick and Morty</h1>
   );
 }
 
