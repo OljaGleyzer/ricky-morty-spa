@@ -1,5 +1,9 @@
-.NavBar{
+ .navbar{
     background-color: pink;
     color: black;
-    padding: 1,5rem  ;
-}
+    display:  flex !important;
+    align-content: center !important;
+    padding: 2rem;
+} 
+
+

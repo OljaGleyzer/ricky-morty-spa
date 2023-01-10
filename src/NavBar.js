@@ -5,9 +5,9 @@ import './NavBar.css';
 
 function NavBar() {
     return (
-        <Navbar class="NavBar" expand="lg" variant="light" bg="light">
-          <Container>
-            <Navbar.Brand>Navbar</Navbar.Brand>
+        <Navbar className="navbar">
+          <Container >
+            <input type="text" id="header-search" placeholder="Search" />
           </Container>
         </Navbar>
       );
