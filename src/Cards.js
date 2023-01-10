@@ -16,10 +16,18 @@ const url = "https://rickandmortyapi.com/api/character"
     return(
         <div>
           {data && data.map((d) => {
-    return <p key={d.id}>{d.name}</p>})}
+
+            return (
+                <div key={d.id}>
+                    <p>{d.name}</p>
+                    <img src={d.image} alt="image character" />
+                </div>
+            )
+    
+    })}
 
     {/* <div>
-    return <img key={d.id} src={d.image} alt="jhk" />; */}
+    return ; */}
           
           </div>
           );
