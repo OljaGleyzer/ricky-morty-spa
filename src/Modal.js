@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+// import "./Modal.css";
+import Modal from "react-bootstrap/Modal";
 
-function MyModal({d}) {
-  const [isOpen, setIsOpen] = useState(false);
+function MyModal({ d, isOpen, setIsOpen }) {
+  console.log("d", d);
+  console.log("isOpen :>> ", isOpen);
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Open Modal</button>
       {isOpen && (
         <div className="modal">
           <div className="modal-content">
-            <p>Modal content goes here</p>
+            <h2>{d.name}</h2>
+            <img src={d.image} alt="Avatar" />
+            <p>Species: {d.species}</p>
+            <p>Status: {d.status}</p>
+
             <button onClick={() => setIsOpen(false)}>Close Modal</button>
           </div>
         </div>
