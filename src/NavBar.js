@@ -6,10 +6,15 @@ import Row from "react-bootstrap/esm/Row";
 import logo from "./logo.png";
 
 function NavBar({ getInput }) {
+  const styleImage = {
+    width: "30vw",
+    height: "auto",
+    border: "2px  solid",
+  };
   return (
     <Navbar className="navbar">
       <Container className="justify-content-md-center flex-column">
-        <img src={logo} alt="titlepic" />
+        <img src={logo} alt="titlepic" style={styleImage} />
         <input
           type="text"
           id="header-search"

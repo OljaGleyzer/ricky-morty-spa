@@ -44,27 +44,23 @@ function Cards() {
       <NavBar getInput={getInput} />
 
       <div className="container">
-        {searchResult !== 0
+        {searchResult == 0
+          ? data.map((d) => {
+              return <SingleCard d={d} />;
+            })
+          : searchResult.map((d) => {
+              return <SingleCard d={d} />;
+            })}
+
+        {/* {searchResult !== 0
           ? searchResult.map((d) => {
               return (
                 <SingleCard d={d} />
-
-                // Single Card without beeing an own component
-                // <div key={d.id} className="flip-card">
-                // <div className="flip-card-inner">
-                //     <div className="flip-card-front">
-                //     <img src={d.image} alt="Avatar" />
-                //     </div>
-                //     <div className="flip-card-back">
-                //     <p>{d.name}</p>
-                //     </div>
-                // </div>
-                // </div>
               );
             })
           : data.map((d) => {
               return <SingleCard d={d} />;
-            })}
+            })} */}
       </div>
     </>
   );
