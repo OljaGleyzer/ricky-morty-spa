@@ -5,28 +5,63 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import SingleCard from "./SingleCard";
 import NavBar from "./NavBar";
+import { Button } from "react-bootstrap";
 
 function Cards() {
   //fetchiung data
   const [data, setData] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
   const url = "https://rickandmortyapi.com/api/character";
+  //pagination
+  // const urlPagination: "https://rickandmortyapi.com/api/character/?page=${page}";
+  const [page, setPage] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(false);
+  const [error, setError] = useState(null);
 
-  //Search Bar
-  // function SearchBar() {
-  //     const [serachTerm, setSearchTerm] = useState("");
+  //fetch data traditional
+  // useEffect(() => {
+  //   fetch(url)
+  //     .then((response) => response.json())
+  //     .then((result) => setData(result.results));
+  //     }, []);
 
+  // fetch data async with pagination
   useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((result) => setData(result.results));
-    //filter Search
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://rickandmortyapi.com/api/character/?page=${page}`
+        );
+        const result = await response.json();
+        setData(result.results);
+        setHasNextPage(data.info.next !== null); // can not reach data.info.next ?
+        console.log("data.info", data.info);
+      } catch (error) {
+        console.log("catch :>> ", error);
+        setError(error);
+      }
+    };
+    fetchData();
+  }, [page]);
 
-    //     const searchdata = data.filter(d) => d.name.toLowerCase().includes(searchTerm.toLowerCase())
-    //     );
-    //     setFilteredData(searachdata);
-    // });
-  }, []); // }, [searchTerm, data]);
+  // example fetching data async
+
+  // useEffect(() => {
+  //   const fetchTryCatch = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         "https://rickandmortyapi.com/api/character"
+  //       );
+  //       const result = await response.json();
+  //       setFetchResult(result.results);
+  //     } catch (error) {
+  //       console.log("Catch: ", error);
+  //       setError(error);
+  //     }
+  //   };
+
+  //   fetchTryCatch();
+  // }, []);
 
   //Eventhandler
   const getInput = (event) => {
@@ -62,6 +97,14 @@ function Cards() {
               return <SingleCard d={d} />;
             })} */}
       </div>
+      <p style={{ backgroundColor: "red" }}>
+        {page > 1 && (
+          <Button onClick={() => setPage(page - 1)}>Previous</Button>
+        )}
+        {/* seems to cause Problems  {hasNextPage && ( */}
+        <Button onClick={() => setPage(page + 1)}>Next Page</Button>
+        {/* )} */}
+      </p>
     </>
   );
 }
