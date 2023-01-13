@@ -22,7 +22,7 @@ function MyBootstrapModal({ show, handleClose, d }) {
         <Modal.Header closeButton>
           <Modal.Title>{d.name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body style={styleModalBody}>
+        <Modal.Body>
           <div style={styleModalImage}>
             <img src={d.image} alt="Avatar" className="img-fluid" />
           </div>
