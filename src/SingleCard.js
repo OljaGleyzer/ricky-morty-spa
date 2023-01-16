@@ -23,7 +23,16 @@ function SingleCard({ d }) {
             <h1>{name}</h1>
 
             {/* <button onClick={openUglyModal}>open Modal</button> */}
-            <Button variant="primary" onClick={handleShow}>
+            <Button
+              style={{
+                backgroundColor: "blueviolet",
+                color: "black",
+                padding: "5px",
+                margin: "5px",
+              }}
+              variant="primary"
+              onClick={handleShow}
+            >
               More Info
             </Button>
           </div>

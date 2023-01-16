@@ -34,7 +34,7 @@ function Cards() {
         );
         const result = await response.json();
         setData(result.results);
-        setHasNextPage(data.info.next !== null); // can not reach data.info.next ?
+        setHasNextPage(data.info.next !== null);
         console.log("data.info", data.info);
       } catch (error) {
         console.log("catch :>> ", error);
@@ -43,25 +43,6 @@ function Cards() {
     };
     fetchData();
   }, [page]);
-
-  // example fetching data async
-
-  // useEffect(() => {
-  //   const fetchTryCatch = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "https://rickandmortyapi.com/api/character"
-  //       );
-  //       const result = await response.json();
-  //       setFetchResult(result.results);
-  //     } catch (error) {
-  //       console.log("Catch: ", error);
-  //       setError(error);
-  //     }
-  //   };
-
-  //   fetchTryCatch();
-  // }, []);
 
   //Eventhandler
   const getInput = (event) => {
@@ -97,13 +78,39 @@ function Cards() {
               return <SingleCard d={d} />;
             })} */}
       </div>
-      <p style={{ backgroundColor: "red" }}>
+      <p
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         {page > 1 && (
-          <Button onClick={() => setPage(page - 1)}>Previous</Button>
+          <Button
+            style={{
+              backgroundColor: "pink",
+              color: "black",
+              padding: "5px",
+              margin: "5px",
+            }}
+            onClick={() => setPage(page - 1)}
+          >
+            Previous Page
+          </Button>
         )}
-        {/* seems to cause Problems  {hasNextPage && ( */}
-        <Button onClick={() => setPage(page + 1)}>Next Page</Button>
-        {/* )} */}
+        {/* {hasNextPage && ( */}
+        {page <= 41 && (
+          <Button
+            style={{
+              backgroundColor: "pink",
+              color: "black",
+              padding: "5px",
+              margin: "5px",
+            }}
+            onClick={() => setPage(page + 1)}
+          >
+            Next Page
+          </Button>
+        )}
       </p>
     </>
   );
